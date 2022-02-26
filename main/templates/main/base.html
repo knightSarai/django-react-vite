@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0"
+    />
+    <title>Vite - Django App</title>
+
+    {% if debug %}
+        <script type="module"
+                src="http://localhost:3000/@vite/client"
+        ></script>
+
+        <!-- If you're using vite with React, this next script will be needed for HMR -->
+        <script type="module">
+            import RefreshRuntime from 'http://localhost:3000/@react-refresh';
+
+            if (RefreshRuntime) {
+                RefreshRuntime.injectIntoGlobalHook(window);
+                window.$RefreshReg$ = () => {
+                };
+                window.$RefreshSig$ = () => (type) => type;
+                window.__vite_plugin_react_preamble_installed__ = true;
+            }
+        </script>
+    {% endif %}
+</head>
+
+<body>
+<div id="root"></div>
+{% block content %}{% endblock %}
+</body>
+</html>
